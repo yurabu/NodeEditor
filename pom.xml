@@ -110,14 +110,6 @@
 			<artifactId>jta</artifactId>
 			<version>1.1</version>
 		</dependency>
-		
-		<dependency>
-   			<groupId>com.vaadin</groupId>
-   			<artifactId>vaadin-testbench</artifactId>
-   			<version>4.0.2</version>
-       		<scope>test</scope>
-		</dependency>
-		 
 	</dependencies>
 
 	<build>
@@ -196,20 +188,6 @@
 					</filesets>
 				</configuration>
 			</plugin>
-			
-<plugin>
- <artifactId>maven-failsafe-plugin</artifactId>
- <version>2.17</version>
- <executions>
-   <execution>
-     <goals>
-       <goal>integration-test</goal>
-       <goal>verify</goal>
-     </goals>
-   </execution>
- </executions>
-</plugin>
-
 			<!-- The Jetty plugin allows us to easily test the development build by
 				running jetty:run on the command line. -->
 			<plugin>
@@ -219,33 +197,6 @@
 				<configuration>
 				    <scanIntervalSeconds>2</scanIntervalSeconds>
 				</configuration>
-				   <executions>
-       <!-- start and stop jetty (running our app) when
-            running integration tests -->
-       <execution>
-           <id>start-jetty</id>
-           <phase>pre-integration-test</phase>
-           <goals>
-               <goal>start</goal>
-           </goals>
-           <configuration>
-               <scanIntervalSeconds>0</scanIntervalSeconds>
-               <stopKey>STOP</stopKey>
-               <stopPort>8866</stopPort>
-           </configuration>
-       </execution>
-       <execution>
-           <id>stop-jetty</id>
-           <phase>post-integration-test</phase>
-           <goals>
-               <goal>stop</goal>
-           </goals>
-           <configuration>
-               <stopKey>STOP</stopKey>
-               <stopPort>8866</stopPort>
-           </configuration>
-       </execution>
-   </executions>
 			</plugin>
 
 		</plugins>
